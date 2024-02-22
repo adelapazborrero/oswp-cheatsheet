@@ -71,3 +71,44 @@ sudo iw dev wlan0mon info
 @end
 ___
 
+* Check current regulatory domain
+@code bash
+sudo iw reg get
+@end
+___
+
+* Update regulatory domain for current country
+@code bash
+# Check ISO/IEC 3166-1 alpha 2 list for country initials
+iw reg set <COUNTRY>
+
+# For permanent change update the following file
+/etc/default/crda 
+# Update value of the following variable with contry initials
+REGDOMAIN
+
+@end
+
+___
+
+* List WiFi and bluetooth devices (only able to block at soft level)
+@code bash
+sudo rfkill list
+
+# Soft blocked: blocked at software level
+# Hard blocked: blocked at hardware or BIOS level
+@end
+___
+
+
+* Block and Unblock WiFi or Bluetooth
+@code bash
+sudo rfkill list
+
+sudo rfkill block 1     # Blocks Device 1
+sudo rfkill list 1      # Verify Device 1 blocked
+sudo rfkill unblock 1   # Unblock Device 1
+sudo rfkill block all   # Block all
+@end
+___
+
