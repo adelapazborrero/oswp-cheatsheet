@@ -15,10 +15,10 @@ ___
 * Use Wash to get information about surrounding APs
 @code bash
 # Default 2.4GHz
-wash -i wlan0mon
+sudo wash -i wlan0mon
 
 # Scan 5GHz
-wash -i wlan0mon -5
+sudo wash -i wlan0mon -5
 @end
 @code bash
 BSSID               Ch  dBm  WPS  Lck  Vendor    ESSID
