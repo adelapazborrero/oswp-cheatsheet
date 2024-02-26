@@ -1,0 +1,6 @@
+
+* Explanation
+
+  Create a captive portal so attacker can get plain text credentials
+  We mimic an existing AP with a captive portal, then we create a rogue AP with a captive portal
+  served via http to get credentials.
