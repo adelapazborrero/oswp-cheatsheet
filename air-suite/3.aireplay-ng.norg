@@ -20,6 +20,9 @@ ___
 # set monitor mode in target channel (channel 3)
 sudo airmon-ng start wlan1 3
 
+# or if already up
+iwconfig wlan1mon channel 3
+
 # start replay with -9 flag
 sudo aireplay-ng -9 wlan1mon
 @end
