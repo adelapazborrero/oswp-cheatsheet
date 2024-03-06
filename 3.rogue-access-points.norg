@@ -38,6 +38,9 @@ ___
 wireshark discovery-01.cap
 @end
 Find beacon for the target AP: *wlan.fc.type_subtype == 0x08 && wlan.ssid == "Mostar"*
+Check for RNS for WPA2 and ciphers
+Check for WPA for WPA1 and ciphers
+Look at ciphers to add them later 
 
 ___
 
@@ -71,14 +74,14 @@ wpa_key_mgmt=WPA-PSK
 # Any password
 wpa_passphrase=ANYPASSWORD
 
-# WPA1 Encryption
+# WPA1 Encryption if not WPA found in wireshark not needed
 wpa_pairwise=TKIP CCMP
 
-# WPA2 Encryption
+# WPA2 Encryption if not RNS found in wireshard not needed
 rsn_pairwise=TKIP CCMP
 
 # Output of handshake 
-mana_wpaout=/home/sombi/mostar.hccapx
+mana_wpaout=/home/typ0/mostar.hccapx
 @end
 ___
 
