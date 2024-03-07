@@ -41,12 +41,20 @@ sudo airmon-ng stop wlan1mon
 @end
 ** 2. Grab the certificate
    - In wireshark add filter `tls.handshake.certificate` or `tls.handshake.type == 11`
-   - Open %Extensible Authentication Protocal% > %Transport Layer Security% > %Handshake Protocol: Certificate%
+   - Open %Extensible Authentication Protocal% > %Transport Layer Security% > %Handshake Protocol: Certificate% > %Handshake Protocol: Certificate% > %Certificate%
    - Right click > %Export Packet Bytes% > Save with `.der` extension
 
 ** 3. Display info about certificate
 @code bash
 openssl x509 -inform der -in CERTIFICATE_FILENAME -text
+
+Certificate:
+    Data:
+        ...
+        Issuer: C = ES, ST = Madrid, L = Madrid, O = WiFiChallengeLab, OU = Certificate Authority, CN = WiFiChallengeLab CA, emailAddress = ca@WiFiChallengeLab.com
+        ...
+        Subject: C = ES, L = Madrid, O = WiFiChallengeLab, OU = Server, CN = WiFiChallengeLab CA, emailAddress = server@WiFiChallengeLab.com
+        ...
 
 # For converting the ceritificate to base64 IF NECESSARY
 openssl x509 -inform der -in CERTIFICATE_FILENAME -outform pem -out OUTPUT_PEM.crt
@@ -193,6 +201,17 @@ cosmo:$NETNTLM$ceb69885c656590c$7279f65aa49870f45822c89dcbdd73c1b89d377844caead4
 
 # crack password
 john --wordlist=/usr/share/john/password.lst pass.hash
+
+
+@end
+
+ * Use hashcat to crack the password
+@code bash
+# copy output to pass.hash
+cosmo::::7279f65aa49870f45822c89dcbdd73c1b89d377844caead4:ceb69885c656590c
+
+# crack password
+hashcat -a 0 -m 5500 pass.hash ~/rockyou-top100000.txt --force
 @end
 ___
 
