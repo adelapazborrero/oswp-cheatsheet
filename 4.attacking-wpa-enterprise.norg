@@ -201,8 +201,6 @@ cosmo:$NETNTLM$ceb69885c656590c$7279f65aa49870f45822c89dcbdd73c1b89d377844caead4
 
 # crack password
 john --wordlist=/usr/share/john/password.lst pass.hash
-
-
 @end
 
  * Use hashcat to crack the password
@@ -220,14 +218,27 @@ ___
 Create supplicant conf mgt.conf
 @code bash
 network={
-        ssid="SSID HERE"
-        scan_ssid=1
-        key_mgmt=WPA-EAP
-        eap=TTLS
-        identity="domain\username HERE"
-        anonymous_identity="anon"
-        password="CRACKED PASSWORD HERE"
-        phase2="auth=PAP"
+    ssid="SSID HERE"
+    scan_ssid=1
+    key_mgmt=WPA-EAP
+    eap=TTLS
+    identity="domain\username HERE"
+    anonymous_identity="anon"
+    password="CRACKED PASSWORD HERE"
+    phase2="auth=PAP"
+}
+
+// OR
+
+network={
+    ssid="fake-network"
+    scan_ssid=1
+    key_mgmt=WPA-EAP
+    identity="peter"
+    password="peter124!"
+    eap=PEAP
+    phase1="peaplabel=0"
+    phase2="auth=MSCHAPV2"
 }
 @end
 Connect via supplicant
